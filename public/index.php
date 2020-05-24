@@ -12,7 +12,7 @@ $api->init();
 
 $api->slim_app->get('/', function (Request $request, Response $response) {
   $message = [
-    'message' => 'COVID API ready for requests!'
+    'message' => 'UK Coronavirus dashboard API ready for requests!'
   ];
   $response->getBody()->write(json_encode($message));
   return $response;
