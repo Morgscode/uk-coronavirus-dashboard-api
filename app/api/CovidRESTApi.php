@@ -24,7 +24,7 @@ class CovidRESTApi
   private function injectDbInterface()
   {
     $this->slim_app_container['db_query_manager'] = function ($c) {
-      $db = new MySQLDataBaseConnection('localhost', 'root', 'root', 'uk_covid_statistics');
+      $db = new MySQLDataBaseConnection(DB_SERVER_NAME, DB_USER, DB_PASS, DB_NAME);
       $db->connect();
       $query_manager = new MySQLDatabaseQueryManager($db->conn);
       return $query_manager;

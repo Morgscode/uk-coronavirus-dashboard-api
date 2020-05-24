@@ -2,7 +2,7 @@
 
 require '../vendor/autoload.php';
 
-//enable cors for local angular client
+//enable cors
 if (isset($_SERVER['HTTP_ORIGIN'])) {
   header("Access-Control-Allow-Origin: *");
   header('Access-Control-Allow-Credentials: true');
@@ -17,3 +17,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
   exit(0);
 }
+
+define("ENV", "prod");
+
+switch(ENV) {
+  case 'dev':
+    define("DB_SERVER_NAME", "localhost");
+    define("DB_USER", "root");
+    define("DB_PASS", "root");
+    define("DB_NAME", "uk_covid_statistics");
+break;
+  case 'prod':
+  define("DB_SERVER_NAME", "");
+  define("DB_USER", "");
+  define("DB_PASS", "");
+  define("DB_NAME", "");
+break;
+}
+
+
+
