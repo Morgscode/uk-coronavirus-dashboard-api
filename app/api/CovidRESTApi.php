@@ -4,7 +4,7 @@ namespace CovidDashboard\App\Api;
 
 use \CovidDashboard\App\Core\Database\MySQLDataBaseConnection;
 use \CovidDashboard\App\Core\Database\MySQLDatabaseQueryManager;
-use \CovidDashboard\App\Api\Controllers\ConditionsApiController as ConditionsApiController;
+use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
 use \CovidDashboard\App\Api\Controllers\DashboardInfoController;
 use CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 
