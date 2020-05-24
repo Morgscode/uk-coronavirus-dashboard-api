@@ -1,0 +1,15 @@
+{
+  "autoload": {
+    "classmap": [
+      "./app/api",
+      "./app/api/controllers",
+      "./app/api/models",
+      "./app/core/database",
+      "./app/services"
+    ]
+  },
+  "require": {
+    "slim/slim": "3.*",
+    "guzzlehttp/guzzle": "~6.0"
+  }
+}
