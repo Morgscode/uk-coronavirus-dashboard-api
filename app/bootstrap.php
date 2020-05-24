@@ -28,10 +28,10 @@ switch(ENV) {
     define("DB_NAME", "uk_covid_statistics");
 break;
   case 'prod':
-  define("DB_SERVER_NAME", "");
-  define("DB_USER", "");
-  define("DB_PASS", "");
-  define("DB_NAME", "");
+    define("DB_SERVER_NAME", "bqmayq5x95g1sgr9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com");
+    define("DB_USER", "ml7dygsiolxcw8yd");
+    define("DB_PASS", "ew5uvzl2dp7l3hzy");
+    define("DB_NAME", "tdgqb6uz2q4x8c8a");
 break;
 }
 
