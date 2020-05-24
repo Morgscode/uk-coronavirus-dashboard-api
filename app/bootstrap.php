@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
   exit(0);
 }
 
-define("ENV", "dev");
+define("ENV", "prod");
 
 switch(ENV) {
   case 'dev':
