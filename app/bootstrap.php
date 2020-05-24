@@ -4,7 +4,7 @@ require '../vendor/autoload.php';
 
 //enable cors
 if (isset($_SERVER['HTTP_ORIGIN'])) {
-  header("Access-Control-Allow-Origin: *");
+  header("Access-Control-Allow-Origin: https://ukcoronavirusstatistics.com");
   header('Access-Control-Allow-Credentials: true');
   header('Access-Control-Max-Age: 86400');    // cache for 1 day
 }
