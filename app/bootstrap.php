@@ -3,11 +3,11 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "prod");
+define("ENV", "dev");
 
 // define STDERR in line with php warning
 if(!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
-
+ 
 // assess env and set further application variables
 switch(ENV) {
   case "dev":
