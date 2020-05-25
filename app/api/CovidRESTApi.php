@@ -6,20 +6,33 @@ use \CovidDashboard\App\Core\Database\MySQLDataBaseConnection;
 use \CovidDashboard\App\Core\Database\MySQLDatabaseQueryManager;
 use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
 use \CovidDashboard\App\Api\Controllers\DashboardInfoController;
-use CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
+use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
+use \Monolog\Logger;
+use \Monolog\Handler\StreamHandler;
 
 class CovidRESTApi
 {
 
   public $slim_app;
-  protected $slim_app_container;
+  public $slim_app_container;
   protected $db_interface;
 
   public function __construct()
   {
-    $this->slim_app = new \Slim\App;
+    $config['displayErrorDetails'] = (ENV === 'dev') ? true : false;
+    $this->slim_app = new \Slim\App(['settings' => $config]);
     $this->slim_app_container = $this->slim_app->getContainer();
   }
+
+  private function injectAppLooger() 
+  {
+    $this->slim_app_container['logger'] = function($c) {
+      $logger = new Logger('uk-covid-dashboard-api-logger');
+      $file_handler = new StreamHandler('../app/logs/app.log'); 
+      $logger->pushHandler($file_handler);
+      return $logger;
+    };
+  } 
 
   private function injectDbInterface()
   {
@@ -42,7 +55,7 @@ class CovidRESTApi
   private function injectStatisticsContoller() 
   {
     $this->slim_app_container['StatsController'] = function ($c) {
-      $stats_controller = new DashboardStatisticsController($this->slim_app_container->db_query_manager);
+      $stats_controller = new DashboardStatisticsController($this->slim_app_container);
       return $stats_controller;
     };
   } 
@@ -57,6 +70,7 @@ class CovidRESTApi
 
   public function init()
   { 
+    $this->injectAppLooger();
     $this->injectDbInterface();
     $this->injectNHSApiController();
     $this->injectStatisticsContoller();

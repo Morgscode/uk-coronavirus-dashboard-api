@@ -7,11 +7,13 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 class DashboardStatisticsController {
   
+  protected $slim_container;
   protected $db_interface;
 
-  public function __construct($db) 
+  public function __construct($container) 
   {
-    $this->db_interface = $db;
+    $this->slim_container = $container;
+    $this->db_interface = $this->slim_container->db_query_manager;
   }
 
   public function getAllCovidDeaths(Request $request, Response $response) 
