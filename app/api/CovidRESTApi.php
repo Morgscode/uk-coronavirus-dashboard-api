@@ -28,7 +28,7 @@ class CovidRESTApi
   {
     $this->slim_app_container['logger'] = function($c) {
       $logger = new Logger('uk-covid-dashboard-api-logger');
-      $log_location = (ENV == 'prod') ? 'php:://stdout' : '../app/logs/app.log';
+      $log_location = (ENV == 'prod') ? 'php:://output' : '../app/logs/app.log';
       $file_handler = new StreamHandler($log_location); 
       $logger->pushHandler($file_handler);
       return $logger;
