@@ -1,6 +1,6 @@
 <?php 
 
-namespace CovidDashboard\App\Api\MiddleWare;
+namespace CovidDashboard\App\Api\Middleware;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
@@ -18,4 +18,5 @@ class AppLoggingMiddleware {
     $response = $next($request, $response);
     return $response;
   }
+  
 }

@@ -6,7 +6,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Container\ContainerInterface as Container;
 
-class DashboardInfoController {
+class DashboardWidgetController {
   protected $slim_container;
 
   public function __construct(Container $container) 

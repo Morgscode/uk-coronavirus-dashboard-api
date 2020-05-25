@@ -5,7 +5,7 @@ namespace CovidDashboard\App\Api;
 use \CovidDashboard\App\Core\Database\MySQLDataBaseConnection;
 use \CovidDashboard\App\Core\Database\MySQLDatabaseQueryManager;
 use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
-use \CovidDashboard\App\Api\Controllers\DashboardInfoController;
+use \CovidDashboard\App\Api\Controllers\DashboardWidgetController;
 use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
@@ -61,10 +61,10 @@ class CovidRESTApi
     };
   } 
 
-  private function injectDashBoardInfoController()
+  private function injectDashboardWidgetController()
   {
-    $this->slim_app_container['DashboardInfoController'] = function ($c) {
-      $info_controller = new DashboardInfoController($this->slim_app_container);
+    $this->slim_app_container['DashboardWidgetController'] = function ($c) {
+      $info_controller = new DashboardWidgetController($this->slim_app_container);
       return $info_controller;
     };
   }
@@ -75,6 +75,6 @@ class CovidRESTApi
     $this->injectDbInterface();
     $this->injectNHSApiController();
     $this->injectStatisticsContoller();
-    $this->injectDashBoardInfoController();
+    $this->injectDashboardWidgetController();
   }
 }
