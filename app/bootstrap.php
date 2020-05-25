@@ -4,6 +4,8 @@ require '../vendor/autoload.php';
 
 define("ENV", "prod");
 
+if(!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
+
 switch(ENV) {
   case "dev":
 
