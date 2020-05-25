@@ -1,1 +1,8 @@
 [2020-05-25 17:35:49] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:40:44] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:40:48] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:43:20] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:44:00] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:45:06] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:45:45] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
+[2020-05-25 17:46:24] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []

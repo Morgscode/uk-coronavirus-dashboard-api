@@ -18,7 +18,7 @@ class MySQLDatabaseQueryManager implements QueryBuilder
 
   public function getAll($table)
   {
-    $this->query = 'SELECT * FROM {$table}';
+    $this->query = "SELECT * FROM {$table}";
     $this->statement = $this->db_interface->prepare($this->query);
     $this->statement->execute();
     return $this->statement->fetchAll(PDO::FETCH_OBJ);
@@ -26,7 +26,7 @@ class MySQLDatabaseQueryManager implements QueryBuilder
 
   public function getRowById($table, $id)
   {
-    $this->query = 'SELECT * FROM ${table} WHERE id = :id';
+    $this->query = "SELECT * FROM ${table} WHERE id = :id";
     $this->statement = $this->db_interface->prepare($this->query);
     $this->statement->bindParam(':id', $id);
     $this->statement->execute();
@@ -35,7 +35,7 @@ class MySQLDatabaseQueryManager implements QueryBuilder
 
   public function getRowByMostRecentDateEntry($table)
   {
-    $this->query = 'SELECT * FROM {$table} ORDER BY date DESC LIMIT 1';
+    $this->query = "SELECT * FROM {$table} ORDER BY date DESC LIMIT 1";
     $this->statement = $this->db_interface->prepare($this->query);
     $this->statement->execute();
     return $this->statement->fetchAll(PDO::FETCH_OBJ);
@@ -43,7 +43,7 @@ class MySQLDatabaseQueryManager implements QueryBuilder
 
   public function getRowByMostRecentEntry($table)
   {
-    $this->query = 'SELECT * FROM {$table} ORDER BY id DESC LIMIT 1';
+    $this->query = "SELECT * FROM {$table} ORDER BY id DESC LIMIT 1";
     $this->statement = $this->db_interface->prepare($this->query);
     $this->statement->execute();
     return $this->statement->fetchAll(PDO::FETCH_OBJ);

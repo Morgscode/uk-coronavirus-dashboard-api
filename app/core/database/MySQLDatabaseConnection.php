@@ -21,7 +21,7 @@ class MySQLDataBaseConnection implements DatabaseConnection
     $this->dbusername = $dbusername;
     $this->dbpassword = $dbpassword;
     $this->dbname = $dbname;
-    $this->dsn = 'mysql:host=$this->servername;dbname=$this->dbname';
+    $this->dsn = "mysql:host=$this->servername;dbname=$this->dbname";
   }
 
   public function connect()
