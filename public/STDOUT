@@ -1,0 +1,1 @@
+[2020-05-25 17:53:36] uk-covid-dashboard-api-logger.INFO: GET, full path requested: http://127.0.0.1:8888/uk-coronavirus-dashboard-api/public/stats/deaths/latest, user-ip: 127.0.0.1, user-port: 8888 [] []
