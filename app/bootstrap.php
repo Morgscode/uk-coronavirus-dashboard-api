@@ -5,7 +5,7 @@ require '../vendor/autoload.php';
 define("ENV", "prod");
 
 switch(ENV) {
-  case 'dev':
+  case "dev":
 
     //enable cors for local dev
     if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -21,7 +21,7 @@ switch(ENV) {
     define("DB_NAME", "uk_covid_statistics");
   
 break;
-  case 'prod':
+  case "prod":
 
     //enable cors for front-end client
     if (isset($_SERVER['HTTP_ORIGIN'])) {

@@ -21,7 +21,7 @@ $api->slim_app->get('/', function (Request $request, Response $response) {
     'message' => 'UK Coronavirus dashboard API ready for requests!'
   ];
   $response->getBody()->write(json_encode($message));
-  return $response;
+  return $response->withHeader("Content-Type", "application/json");
 });
 
 //require all routes

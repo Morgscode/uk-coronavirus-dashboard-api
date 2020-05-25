@@ -20,28 +20,28 @@ class DashboardStatisticsController {
   {
     $data = $this->db_interface->getAll('uk_daily_covid_deaths');
     $response->getBody()->write(json_encode($data));
-    return $response->withHeader("Content-Type", "application/json");
+    return $response->withHeader('Content-Type', 'application/json');
   }
 
   public function getAllCovidCases(Request $request, Response $response)
   {
     $data = $this->db_interface->getAll('uk_daily_covid_cases');
     $response->getBody()->write(json_encode($data));
-    return $response->withHeader("Content-Type", "application/json");
+    return $response->withHeader('Content-Type', 'application/json');
   }
 
   public function getLatestCovidDeathStats(Request $request, Response $response)
   {
     $data = $this->db_interface->getRowByMostRecentDateEntry('uk_daily_covid_deaths');
     $response->getBody()->write(json_encode($data));
-    return $response->withHeader("Content-Type", "application/json");
+    return $response->withHeader('Content-Type', 'application/json');
   }  
 
   public function getLatestCovidCasesStats(Request $request, Response $response)
   {
     $data = $this->db_interface->getRowByMostRecentDateEntry('uk_daily_covid_cases');
     $response->getBody()->write(json_encode($data));
-    return $response->withHeader("Content-Type", "application/json");
+    return $response->withHeader('Content-Type', 'application/json');
   }
 
 }

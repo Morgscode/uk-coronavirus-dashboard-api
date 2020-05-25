@@ -21,7 +21,7 @@ class DashboardInfoController {
     if ($data) {
        // if db row exists, return to front-end
         $response->getBody()->write(json_encode($data));
-        return $response->withHeader("Content-Type", "application/json");
+        return $response->withHeader('Content-Type', 'application/json');
     
     } else {
         // get nhs and store condition api response
@@ -31,7 +31,7 @@ class DashboardInfoController {
         
         $response->getBody()->write(json_encode($data));
         // return new db row to front-end
-        return $response->withHeader("Content-Type", "application/json");
+        return $response->withHeader('Content-Type', 'application/json');
     }
 
   }
