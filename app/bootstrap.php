@@ -6,10 +6,10 @@ require '../vendor/autoload.php';
 define("ENV", "prod");
 
 // define STDERR in line with php warning
-if(!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
- 
+if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
+
 // assess env and set further application variables
-switch(ENV) {
+switch (ENV) {
   case "dev":
 
     //enable cors for local dev
@@ -24,8 +24,8 @@ switch(ENV) {
     define("DB_USER", "root");
     define("DB_PASS", "root");
     define("DB_NAME", "uk_covid_statistics");
-  
-break;
+
+    break;
   case "prod":
 
     //enable cors for front-end client
@@ -40,8 +40,8 @@ break;
     define("DB_USER", "ml7dygsiolxcw8yd");
     define("DB_PASS", "ew5uvzl2dp7l3hzy");
     define("DB_NAME", "tdgqb6uz2q4x8c8a");
-    
-break;
+
+    break;
 }
 
 // Access-Control headers are received during OPTIONS requests
@@ -52,6 +52,3 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
   exit(0);
 }
-
-
-
