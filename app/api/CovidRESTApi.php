@@ -10,6 +10,7 @@ use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 
+
 class CovidRESTApi
 {
 
@@ -24,16 +25,16 @@ class CovidRESTApi
     $this->slim_app_container = $this->slim_app->getContainer();
   }
 
-  private function injectAppLooger() 
+  private function injectAppLooger()
   {
-    $this->slim_app_container['logger'] = function($c) {
+    $this->slim_app_container['logger'] = function ($c) {
       $logger = new Logger('uk-covid-dashboard-api-logger');
       $log_location = (ENV == 'prod') ? STDERR : '../app/logs/app.log';
-      $file_handler = new StreamHandler($log_location); 
+      $file_handler = new StreamHandler($log_location);
       $logger->pushHandler($file_handler);
       return $logger;
     };
-  } 
+  }
 
   private function injectDbInterface()
   {
@@ -45,21 +46,21 @@ class CovidRESTApi
     };
   }
 
-  private function injectNHSApiController() 
+  private function injectNHSApiController()
   {
     $this->slim_app_container['nhs_api_interface'] = function ($c) {
       $nhs_api_interface = new ConditionsApiController($this->slim_app_container->db_query_manager);
       return $nhs_api_interface;
-    }; 
+    };
   }
 
-  private function injectStatisticsContoller() 
+  private function injectStatisticsContoller()
   {
     $this->slim_app_container['StatsController'] = function ($c) {
       $stats_controller = new DashboardStatisticsController($this->slim_app_container);
       return $stats_controller;
     };
-  } 
+  }
 
   private function injectDashboardWidgetController()
   {
@@ -70,7 +71,7 @@ class CovidRESTApi
   }
 
   public function init()
-  { 
+  {
     $this->injectAppLooger();
     $this->injectDbInterface();
     $this->injectNHSApiController();
