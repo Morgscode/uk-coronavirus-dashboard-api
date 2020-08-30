@@ -36,10 +36,10 @@ switch (ENV) {
     }
 
     // define live db props
-    define("DB_SERVER_NAME", "bqmayq5x95g1sgr9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com");
-    define("DB_USER", "ml7dygsiolxcw8yd");
-    define("DB_PASS", "ew5uvzl2dp7l3hzy");
-    define("DB_NAME", "tdgqb6uz2q4x8c8a");
+    define("DB_SERVER_NAME", getenv('HEROKU_DB_SERVER'));
+    define("DB_USER", getenv('HEROKU_DB_USER'));
+    define("DB_PASS", getenv('HEROKU_DB_PASS'));
+    define("DB_NAME", getenv('HEROKU_DB_NAME'));
 
     break;
 }

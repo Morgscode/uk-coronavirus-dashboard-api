@@ -47,6 +47,4 @@ class ConditionsApiController
     //insert into db
     $this->db_interface->insertSingle('nhs_condition_meta', $nhs_covid_info);
   }
-
-
 }
