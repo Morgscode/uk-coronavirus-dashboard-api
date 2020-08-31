@@ -10,7 +10,6 @@ use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 
-
 class CovidRESTApi
 {
   public $slim_app;

@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "prod");
+define("ENV", "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -24,6 +24,10 @@ switch (ENV) {
     define("DB_USER", "root");
     define("DB_PASS", "root");
     define("DB_NAME", "uk_covid_statistics");
+
+    if (!is_dir(dirname(__FILE__) . '/logs')) :
+      mkdir(dirname(__FILE__) . '/logs');
+    endif;
 
     break;
   case "prod":
