@@ -22,7 +22,7 @@ switch (ENV) {
     // define local db props
     define("DB_SERVER_NAME", "localhost");
     define("DB_USER", "root");
-    define("DB_PASS", "root");
+    define("DB_PASS", "roots");
     define("DB_NAME", "uk_covid_statistics");
 
     // creates logs dir if not existing

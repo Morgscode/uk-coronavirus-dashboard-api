@@ -46,13 +46,9 @@ $api->slim_app->get('/', function (Request $request, Response $response) {
   return $response->withStatus(200);
 });
 
-//require all routes and fail if not found
-try {
-  require_once '../app/api/routes/stats-routes.php';
-  require_once '../app/api/routes/info-routes.php';
-} catch (\Exception $e) {
-  throw new Exception("There was a problem finding the routes", 500);
-}
+//require all routes
+require_once '../app/api/routes/stats-routes.php';
+require_once '../app/api/routes/info-routes.php';
 
 // run the application 
 $api->slim_app->run();

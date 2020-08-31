@@ -7,6 +7,7 @@ use \CovidDashboard\App\Core\Database\MySQLDatabaseQueryManager;
 use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
 use \CovidDashboard\App\Api\Controllers\DashboardWidgetController;
 use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
+use \CovidDashboard\App\Api\Handlers\ResourcesNotFoundHandler;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 
@@ -23,7 +24,7 @@ class CovidRESTApi
     $this->slim_app_container = $this->slim_app->getContainer();
   }
 
-  private function injectAppLooger()
+  private function injectAppLogger()
   {
     $this->slim_app_container['logger'] = function ($c) {
       $logger = new Logger('uk-covid-dashboard-api-logger');
@@ -44,6 +45,13 @@ class CovidRESTApi
     };
   }
 
+  private function injectErrorHandlers()
+  {
+    $this->slim_app_container['errorHandler'] = function ($c) {
+      return new ResourcesNotFoundHandler();
+    };
+  }
+
   private function injectNHSApiController()
   {
     $this->slim_app_container['nhs_api_interface'] = function ($c) {
@@ -52,7 +60,7 @@ class CovidRESTApi
     };
   }
 
-  private function injectStatisticsContoller()
+  private function injectDashboardStatisticsContoller()
   {
     $this->slim_app_container['StatsController'] = function ($c) {
       $stats_controller = new DashboardStatisticsController($this->slim_app_container);
@@ -70,10 +78,11 @@ class CovidRESTApi
 
   public function init()
   {
-    $this->injectAppLooger();
+    $this->injectAppLogger();
     $this->injectDbInterface();
+    $this->injectErrorHandlers();
     $this->injectNHSApiController();
-    $this->injectStatisticsContoller();
     $this->injectDashboardWidgetController();
+    $this->injectDashboardStatisticsContoller();
   }
 }
