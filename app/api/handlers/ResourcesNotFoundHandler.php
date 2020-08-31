@@ -16,7 +16,7 @@ class ResourcesNotFoundHandler
     $message = [
       "status"      => "fail",
       "status_code" => 500,
-      "message"     => "There was a problem fetching the resources",
+      "message"     => "There was a problem fetching the dashboard resources",
     ];
 
     $response->getBody()->write(json_encode($message));
