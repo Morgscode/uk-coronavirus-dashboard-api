@@ -23,7 +23,7 @@ class DashboardWidgetController
     if ($data) {
       // if db row exists, return to front-end
       $response->getBody()->write(json_encode($data));
-      return $response->withHeader('Content-Type', 'application/json');
+      return $response;
     } else {
       // get nhs and store condition api response
       $this->slim_container->nhs_api_interface->updateStoredNHSCovidInfo();
@@ -32,7 +32,7 @@ class DashboardWidgetController
 
       $response->getBody()->write(json_encode($data));
       // return new db row to front-end
-      return $response->withHeader('Content-Type', 'application/json');
+      return $response;
     }
   }
 }
