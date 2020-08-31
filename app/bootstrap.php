@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "prod");
+define("ENV", "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -25,6 +25,7 @@ switch (ENV) {
     define("DB_PASS", "root");
     define("DB_NAME", "uk_covid_statistics");
 
+    // creates logs dir if not existing
     if (!is_dir(dirname(__FILE__) . '/logs')) :
       mkdir(dirname(__FILE__) . '/logs');
     endif;
