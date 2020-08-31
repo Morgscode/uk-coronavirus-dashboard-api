@@ -5,6 +5,7 @@ namespace CovidDashboard\App\Core\Database;
 use  CovidDashboard\App\Core\Database\DatabaseConnection;
 use \PDO;
 use \PDOException;
+use \Exception;
 
 class MySQLDataBaseConnection implements DatabaseConnection
 {
@@ -26,13 +27,12 @@ class MySQLDataBaseConnection implements DatabaseConnection
 
   public function connect()
   {
-
     try {
       $this->conn = new PDO($this->dsn, $this->dbusername, $this->dbpassword);
       $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
     } catch (PDOException $e) {
-      $e->getMessage();
+      throw new Exception("The database connection failed: " . $e->getMessage(), 500);
     }
   }
 }
