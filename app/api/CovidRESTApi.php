@@ -13,7 +13,6 @@ use \Monolog\Handler\StreamHandler;
 
 class CovidRESTApi
 {
-
   public $slim_app;
   public $slim_app_container;
   protected $db_interface;
