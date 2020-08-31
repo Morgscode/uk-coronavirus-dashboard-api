@@ -25,6 +25,10 @@ switch (ENV) {
     define("DB_PASS", "root");
     define("DB_NAME", "uk_covid_statistics");
 
+    if (!is_dir(dirname(__FILE__) . '/logs')) :
+      mkdir(dirname(__FILE__) . '/logs');
+    endif;
+
     break;
   case "prod":
 
