@@ -8,6 +8,12 @@ use \Exception;
 
 class ResourcesNotFoundHandler
 {
+  /**
+   * 
+   * custom error handler for production mode
+   * Hides all errors, and sends a standard 500 response to client
+   * 
+   */
   public function __invoke(Request $request, Response $response, Exception $exception)
   {
     $message = [
