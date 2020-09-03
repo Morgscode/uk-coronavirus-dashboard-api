@@ -4,6 +4,7 @@
       "./app/api",
       "./app/api/controllers",
       "./app/api/models",
+      "./app/api/handlers",
       "./app/core/database",
       "./app/services"
     ]
