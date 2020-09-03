@@ -8,6 +8,7 @@ use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
 use \CovidDashboard\App\Api\Controllers\DashboardWidgetController;
 use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 use \CovidDashboard\App\Api\Handlers\ResourcesNotFoundHandler;
+use Exception;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 
@@ -80,7 +81,10 @@ class CovidRESTApi
   {
     $this->injectAppLogger();
     $this->injectDbInterface();
-    $this->injectErrorHandlers();
+    if (ENV === 'prod') :
+      // set custom error handler for production mode
+      $this->injectErrorHandlers();
+    endif;
     $this->injectNHSApiController();
     $this->injectDashboardWidgetController();
     $this->injectDashboardStatisticsContoller();

@@ -4,7 +4,6 @@ namespace CovidDashboard\App\Api\Controllers;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use \Exception;
 
 class DashboardStatisticsController
 {
@@ -20,13 +19,9 @@ class DashboardStatisticsController
 
   public function getAllCovidDeaths(Request $request, Response $response)
   {
-    try {
-      $data = $this->db_interface->getAll('uk_daily_covid_deaths');
-      $response->getBody()->write(json_encode($data));
-      return $response;
-    } catch (\Throwable $th) {
-      return $this->slim_container['StatisticsRequestErrorHandler'];
-    }
+    $data = $this->db_interface->getAll('uk_daily_covid_deaths');
+    $response->getBody()->write(json_encode($data));
+    return $response;
   }
 
   public function getAllCovidCases(Request $request, Response $response)

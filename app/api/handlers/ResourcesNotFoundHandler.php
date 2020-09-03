@@ -10,9 +10,6 @@ class ResourcesNotFoundHandler
 {
   public function __invoke(Request $request, Response $response, Exception $exception)
   {
-
-    throw new Exception("There was a problem fetching resources: " . $exception->getMessage(), 500);
-
     $message = [
       "status"      => "fail",
       "status_code" => 500,
@@ -20,6 +17,7 @@ class ResourcesNotFoundHandler
     ];
 
     $response->getBody()->write(json_encode($message));
+
     return $response->withHeader('Content-Type', 'application/json')->withStatus(500);
   }
 }
