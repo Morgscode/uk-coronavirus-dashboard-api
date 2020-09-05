@@ -8,7 +8,7 @@ use \CovidDashboard\App\Api\Controllers\ConditionsApiController;
 use \CovidDashboard\App\Api\Controllers\DashboardWidgetController;
 use \CovidDashboard\App\Api\Controllers\DashboardStatisticsController;
 use \CovidDashboard\App\Api\Handlers\ResourcesNotFoundHandler;
-use Exception;
+use \Exception;
 use \Monolog\Logger;
 use \Monolog\Handler\StreamHandler;
 
@@ -40,9 +40,30 @@ class CovidRESTApi
   {
     $this->slim_app_container['db_query_manager'] = function ($c) {
       $db = new MySQLDataBaseConnection(DB_SERVER_NAME, DB_USER, DB_PASS, DB_NAME);
-      $db->connect();
-      $query_manager = new MySQLDatabaseQueryManager($db->conn);
-      return $query_manager;
+      try {
+        $db->connect();
+        /**
+         * 
+         * if the db connection fails,
+         * lets throw an exception
+         * 
+         */
+        if (!$db->conn) :
+          throw new Exception("there was a problem connecting to the database", 500);
+        endif;
+        $query_manager = new MySQLDatabaseQueryManager($db->conn);
+        return $query_manager;
+      } catch (\PDOException $e) {
+        /**
+         * 
+         * lets write the PDO error to the logs, 
+         * and return false to let the controllers
+         * know there is no db connection
+         * 
+         */
+        $this->slim_app_container->logger->error("the covid dashboard api failed to initialise: " . $e->getMessage() . " the error occured in: " . $e->getFile() . "on line " . $e->getLine());
+        return false;
+      }
     };
   }
 
@@ -56,7 +77,7 @@ class CovidRESTApi
   private function injectNHSApiController()
   {
     $this->slim_app_container['nhs_api_interface'] = function ($c) {
-      $nhs_api_interface = new ConditionsApiController($this->slim_app_container->db_query_manager);
+      $nhs_api_interface = new ConditionsApiController($this->slim_app_container);
       return $nhs_api_interface;
     };
   }

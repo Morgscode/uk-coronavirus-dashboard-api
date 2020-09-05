@@ -3,6 +3,7 @@
 use \CovidDashboard\App\Api\CovidRESTApi as CovidRestApi;
 use \CovidDashboard\App\Api\Middleware\AppLoggingMiddleware as RequestLogger;
 use \CovidDashboard\App\Api\Middleware\JSONMiddleware as JSON;
+use \CovidDashboard\App\Api\Middleware\DBConnectionMiddleWare as DbTest;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \RKA\Middleware\IpAddress as ClientIP;
@@ -13,11 +14,7 @@ require_once '../app/bootstrap.php';
 $api = new CovidRestApi();
 
 // initialize dashboard api
-try {
-  $api->init();
-} catch (\Exception $e) {
-  throw new Exception("There was a problem initializing the API", 500);
-}
+$api->init();
 
 /**
  * 
@@ -28,13 +25,16 @@ try {
  * 
  */
 
-// add middleware to give all resposnes a json header (to be invoked last)
+// add middleware to check for db connection in api for each request  (to be invoked last)
+$api->slim_app->add(new DbTest($api->slim_app_container));
+
+// add middleware to give all resposnes a json header
 $api->slim_app->add(new JSON());
 
 // add logging middleware (to be invoked second, once ip address is retrieved)
 $api->slim_app->add(new RequestLogger($api->slim_app_container));
 
-// add middleware to retrieve ip address of client (to be invoked first)
+// add middleware to retrieve ip address of client (to be invoked second)
 $api->slim_app->add(new ClientIP(true, []));
 
 // add root route and set response
