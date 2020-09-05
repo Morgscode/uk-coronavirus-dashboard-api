@@ -11,7 +11,9 @@ class ResourcesNotFoundHandler
   /**
    * 
    * custom error handler for production mode
-   * Hides all errors, and sends a standard 500 response to client
+   * Hides all errors which are caught inside
+   * the slim request and response cycle,
+   * and sends a standard 500 response to client
    * 
    */
   public function __invoke(Request $request, Response $response, Exception $exception)

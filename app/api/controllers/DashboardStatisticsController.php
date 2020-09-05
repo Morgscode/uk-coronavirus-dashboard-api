@@ -4,6 +4,7 @@ namespace CovidDashboard\App\Api\Controllers;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Container\ContainerInterface as Container;
 
 class DashboardStatisticsController
 {
@@ -11,7 +12,7 @@ class DashboardStatisticsController
   protected $slim_container;
   protected $db_interface;
 
-  public function __construct($container)
+  public function __construct(Container $container)
   {
     $this->slim_container = $container;
     $this->db_interface = $this->slim_container->db_query_manager;

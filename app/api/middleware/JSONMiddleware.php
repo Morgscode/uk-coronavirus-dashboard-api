@@ -7,11 +7,13 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 class JSONMiddleware
 {
-
-  public function __construct()
-  {
-  }
-
+  /**
+   * 
+   * This middleware returns all our http responses
+   * to the client as JSON. Its the last middleware
+   * to be invoked on the stack
+   * 
+   */
   public function __invoke(Request $request, Response $response, $next)
   {
     $response = $next($request, $response);

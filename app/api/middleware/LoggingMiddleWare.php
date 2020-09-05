@@ -13,6 +13,19 @@ class AppLoggingMiddleware
     $this->slim_container = $app_container;
   }
 
+  /**
+   * 
+   * with each incoming http request,
+   * let's write some info to the logs
+   * 
+   * @param string $request->getMethod();
+   * @param string $request->getUri();
+   * @param string $uri->getHost();
+   * @param int $uri->getPort();
+   * @param int $request->getAttribute('ip_address'));
+   * 
+   */
+
   public function __invoke(Request $request, Response $response, $next)
   {
     $uri = $request->getUri();
