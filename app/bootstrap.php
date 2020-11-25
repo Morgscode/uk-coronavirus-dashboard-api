@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "prod");
+define("ENV", "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -12,7 +12,7 @@ if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
 switch (ENV) {
   case "dev":
 
-    //enable cors for local dev
+    //enable cors for local dev client || postman
     if (isset($_SERVER['HTTP_ORIGIN'])) {
       header("Access-Control-Allow-Origin: http://localhost:4200");
       header('Access-Control-Allow-Credentials: true');
@@ -51,9 +51,11 @@ switch (ENV) {
 
 // Access-Control headers are received during OPTIONS requests
 if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
-  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])) :
     header("Access-Control-Allow-Methods: GET, OPTIONS");
-  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+  endif;
+  if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])) :
     header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+  endif;
   exit(0);
 }
