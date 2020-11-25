@@ -7,7 +7,6 @@ use \CovidDashboard\App\Api\Middleware\DBConnectionMiddleWare as DbTest;
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use \RKA\Middleware\IpAddress as ClientIP;
-use \Exception as Exception;
 
 require_once '../app/bootstrap.php';
 
@@ -34,13 +33,15 @@ $api->slim_app->add(new JSON());
 // add logging middleware (to be invoked second, once ip address is retrieved)
 $api->slim_app->add(new RequestLogger($api->slim_app_container));
 
-// add middleware to retrieve ip address of client (to be invoked second)
+// add middleware to retrieve ip address of client (to be invoked first)
 $api->slim_app->add(new ClientIP(true, []));
 
 // add root route and set response
 $api->slim_app->get('/', function (Request $request, Response $response) {
   $message = [
-    'message' => 'UK Coronavirus dashboard API ready for requests'
+    "status"      => "success",
+    "status_code" => 200,
+    'message'     => 'UK Coronavirus dashboard API ready for requests',
   ];
   $response->getBody()->write(json_encode($message));
   return $response->withStatus(200);

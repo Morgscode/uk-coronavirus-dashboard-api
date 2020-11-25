@@ -20,7 +20,7 @@ class CovidRESTApi
 
   public function __construct()
   {
-    $config['displayErrorDetails'] = (ENV === 'dev') ? true : false;
+    $config['displayErrorDetails'] = (ENV == 'dev') ? true : false;
     $this->slim_app = new \Slim\App(['settings' => $config]);
     $this->slim_app_container = $this->slim_app->getContainer();
   }

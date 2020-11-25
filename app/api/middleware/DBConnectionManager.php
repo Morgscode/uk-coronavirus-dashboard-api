@@ -4,11 +4,12 @@ namespace CovidDashboard\App\Api\Middleware;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Container\ContainerInterface as Container;
 
 class DBConnectionMiddleWare
 {
 
-  public function __construct($app_container)
+  public function __construct(Container $app_container)
   {
     $this->slim_container = $app_container;
   }
@@ -20,8 +21,9 @@ class DBConnectionMiddleWare
    * can't be handled by our default handler so we 
    * need to hide the SLIM error from the client
    * 
-   * this will invoked in prod mode and trigger
-   * errors where db queries are made outside of try catch blocks
+   * this will invoked with each http request the api 
+   * recieves past it's root route, as each successful 
+   * response to the client on these routes needs db data
    * 
    * @param object $db;
    * 

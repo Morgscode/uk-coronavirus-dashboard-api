@@ -4,11 +4,12 @@ namespace CovidDashboard\App\Api\Middleware;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use \Psr\Container\ContainerInterface as Container;
 
 class AppLoggingMiddleware
 {
 
-  public function __construct($app_container)
+  public function __construct(Container $app_container)
   {
     $this->slim_container = $app_container;
   }

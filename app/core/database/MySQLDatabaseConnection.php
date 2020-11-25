@@ -4,8 +4,6 @@ namespace CovidDashboard\App\Core\Database;
 
 use  CovidDashboard\App\Core\Database\DatabaseConnection;
 use \PDO;
-use \PDOException;
-use \Exception;
 
 class MySQLDataBaseConnection implements DatabaseConnection
 {

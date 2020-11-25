@@ -6,7 +6,7 @@
       "./app/api/models",
       "./app/api/handlers",
       "./app/core/database",
-      "./app/services"
+      "./app/core/services"
     ]
   },
   "require": {
