@@ -39,7 +39,7 @@ class CovidRESTApi
   private function injectDbInterface()
   {
     $this->slim_app_container['db_query_manager'] = function ($c) {
-      $db = new MySQLDataBaseConnection(DB_SERVER_NAME, DB_USER, DB_PASS, DB_NAME);
+      $db = new MySQLDataBaseConnection(DB_HOST, DB_USER, DB_PASS, DB_NAME);
       try {
         $db->connect();
         /**
