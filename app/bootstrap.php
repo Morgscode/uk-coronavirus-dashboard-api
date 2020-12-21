@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "dev");
+define("ENV", "prod");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -20,7 +20,7 @@ switch (ENV) {
     }
 
     // define local db props
-    define("DB_SERVER_NAME", "localhost");
+    define("DB_HOST", "localhost");
     define("DB_USER", "root");
     define("DB_PASS", "root");
     define("DB_NAME", "uk_covid_statistics");
@@ -41,10 +41,10 @@ switch (ENV) {
     }
 
     // define live db props
-    define("DB_SERVER_NAME", getenv('HEROKU_DB_SERVER'));
-    define("DB_USER", getenv('HEROKU_DB_USER'));
-    define("DB_PASS", getenv('HEROKU_DB_PASS'));
-    define("DB_NAME", getenv('HEROKU_DB_NAME'));
+    define("DB_HOST", getenv('DB_HOST'));
+    define("DB_USER", getenv('DB_USER'));
+    define("DB_PASS", getenv('DB_PASS'));
+    define("DB_NAME", getenv('DB_NAME'));
 
     break;
 }
