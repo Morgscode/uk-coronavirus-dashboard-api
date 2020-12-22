@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-if (!defined('ENV')) define('ENV', "dev");
+if (!defined('ENV')) define('ENV', "production");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
