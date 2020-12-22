@@ -61,7 +61,7 @@ class CovidRESTApi
          * know there is no db connection
          * 
          */
-        $this->slim_app_container->logger->error("the covid dashboard api failed to initialise: " . $e->getMessage() . " the error occured in: " . $e->getFile() . "on line " . $e->getLine());
+        $this->slim_app_container->logger->error("the covid dashboard api failed to initialise: " . $e->getMessage() . " the error occured in: " . $e->getFile() . " on line " . $e->getLine());
         return false;
       }
     };

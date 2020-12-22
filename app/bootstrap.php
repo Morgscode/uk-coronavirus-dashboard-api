@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-if (!defined('ENV')) define('ENV', "production");
+if (!defined('ENV')) define('ENV', "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -45,11 +45,7 @@ switch (ENV) {
     define("DB_USER", getenv('DB_USER'));
     define("DB_PASS", getenv('DB_PASS'));
     define("DB_NAME", getenv('DB_NAME'));
-
-    if (getenv('DB_HOST')) :
-      var_dump('runs');
-    endif;
-    
+  
     break;
 }
 
