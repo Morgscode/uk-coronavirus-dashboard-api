@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-define("ENV", "prod");
+if (!defined('ENV')) define('ENV', "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -31,7 +31,7 @@ switch (ENV) {
     endif;
 
     break;
-  case "prod":
+  case "production":
 
     //enable cors for front-end client
     if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -46,6 +46,10 @@ switch (ENV) {
     define("DB_PASS", getenv('DB_PASS'));
     define("DB_NAME", getenv('DB_NAME'));
 
+    if (getenv('DB_HOST')) :
+      var_dump('runs');
+    endif;
+    
     break;
 }
 
