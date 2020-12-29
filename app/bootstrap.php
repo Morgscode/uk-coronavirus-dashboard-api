@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-if (!defined('ENV')) define('ENV', "production");
+if (!defined('ENV')) define('ENV', "dev");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -35,7 +35,7 @@ switch (ENV) {
 
     //enable cors for front-end client
     if (isset($_SERVER['HTTP_ORIGIN'])) {
-      header("Access-Control-Allow-Origin: https://www.ukcoronavirusstatistics.com");
+      header("Access-Control-Allow-Origin: https://uk-coronavirus-dashboard-fe.herokuapp.com/");
       header('Access-Control-Allow-Credentials: true');
       header('Access-Control-Max-Age: 86400');    // cache for 1 day
     }
