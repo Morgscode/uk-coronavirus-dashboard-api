@@ -3,7 +3,7 @@
 require '../vendor/autoload.php';
 
 // set environment
-if (!defined('ENV')) define('ENV', "dev");
+if (!defined('ENV')) define('ENV', "production");
 
 // define STDERR in line with php warning
 if (!defined('STDERR')) define('STDERR', fopen('php://stderr', 'wb'));
@@ -41,10 +41,10 @@ switch (ENV) {
     }
 
     // define live db props
-    define("DB_HOST", getenv('DB_HOST'));
-    define("DB_USER", getenv('DB_USER'));
-    define("DB_PASS", getenv('DB_PASS'));
-    define("DB_NAME", getenv('DB_NAME'));
+    define("DB_HOST", getenv('HEROKU_DB_SERVER'));
+    define("DB_USER", getenv('HEROKU_DB_USER'));
+    define("DB_PASS", getenv('HEROKU_DB_PASS'));
+    define("DB_NAME", getenv('HEROKU_DB_NAME'));
   
     break;
 }
