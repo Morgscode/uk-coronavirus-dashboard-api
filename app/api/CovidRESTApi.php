@@ -102,7 +102,7 @@ class CovidRESTApi
   {
     $this->injectAppLogger();
     $this->injectDbInterface();
-    if (ENV === 'prod') :
+    if (ENV === 'production') :
       // set custom error handler for production mode
       $this->injectErrorHandlers();
     endif;
