@@ -35,7 +35,7 @@ switch (ENV) {
 
     //enable cors for front-end client
     if (isset($_SERVER['HTTP_ORIGIN'])) {
-      header("Access-Control-Allow-Origin: https://uk-coronavirus-dashboard-fe.herokuapp.com/");
+      header("Access-Control-Allow-Origin: https://uk-coronavirus-dashboard-fe.herokuapp.com");
       header('Access-Control-Allow-Credentials: true');
       header('Access-Control-Max-Age: 86400');    // cache for 1 day
     }
